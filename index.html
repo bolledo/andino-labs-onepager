@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AndinoLabs — One Pager 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #06060f; --bg2: #0d0d1e; --bg3: #11112a;
+    --accent: #5b6af8; --accent2: #7c3aed; --teal: #06b6d4;
+    --green: #10b981; --amber: #f59e0b;
+    --text: #f1f5f9; --muted: #94a3b8;
+    --border: rgba(91,106,248,0.18); --card: rgba(255,255,255,0.03);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-width: 320px; }
+
+  /* ── HEADER ── */
+  header {
+    position: relative; overflow: hidden;
+    padding: 80px 48px 64px;
+    background: linear-gradient(135deg, #08081c 0%, #0f0f2d 50%, #08081c 100%);
+    border-bottom: 1px solid var(--border);
+    min-height: 240px;
+  }
+  .neural-bg {
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%; opacity: 0.55; pointer-events: none;
+  }
+  .header-glow-l {
+    position: absolute; top: -100px; left: -100px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(91,106,248,0.22) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .header-inner {
+    max-width: 1100px; margin: 0 auto;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 32px; position: relative; z-index: 1;
+  }
+  .logo-area h1 {
+    font-size: 52px; font-weight: 900; letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .logo-area .tagline { font-size: 16px; color: var(--muted); margin-top: 8px; }
+  .header-badges { display: flex; flex-direction: column; gap: 10px; align-items: flex-end; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .badge-blue  { background: rgba(91,106,248,0.15); border: 1px solid rgba(91,106,248,0.35); color: #818cf8; }
+  .badge-green { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3);  color: #34d399; }
+  .badge-teal  { background: rgba(6,182,212,0.12);  border: 1px solid rgba(6,182,212,0.3);   color: #22d3ee; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: currentColor; display: inline-block; }
+  .dot.pulse { animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.35} }
+  @keyframes nodeFloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+  @keyframes linkGlow { 0%,100%{opacity:0.15} 50%{opacity:0.55} }
+  @keyframes drawPath { from{stroke-dashoffset:600} to{stroke-dashoffset:0} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+
+  /* ── LAYOUT ── */
+  .page { max-width: 1100px; margin: 0 auto; padding: 0 48px 80px; }
+  section { padding: 56px 0; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+  .section-label {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent); margin-bottom: 8px;
+  }
+  h2 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; margin-bottom: 28px; color: #fff; }
+  h3 { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 8px; }
+  p { color: var(--muted); font-size: 15px; line-height: 1.75; }
+
+  /* ── GRIDS & CARDS ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 16px; padding: 24px;
+    transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: rgba(91,106,248,.45); transform: translateY(-2px); }
+
+  /* ── ABOUT ── */
+  .about-layout { display: grid; grid-template-columns: 1fr 420px; gap: 40px; align-items: center; }
+  .about-text { font-size: 18px; line-height: 1.8; color: #cbd5e1; }
+  .founding-meta { display: flex; gap: 32px; flex-wrap: wrap; margin-top: 28px; }
+  .meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .meta-val { font-size: 22px; font-weight: 800; color: #fff; }
+  .meta-lbl { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+  .globe-wrap { position: relative; }
+  .globe-svg { width: 100%; height: auto; display: block; }
+
+  /* ── PROBLEM ── */
+  .problem-card {
+    background: linear-gradient(135deg, rgba(239,68,68,.07), rgba(239,68,68,.03));
+    border-color: rgba(239,68,68,.2);
+  }
+  .problem-card:hover { border-color: rgba(239,68,68,.4); }
+  .problem-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .problem-visual { grid-column: 1/-1; margin-bottom: 8px; }
+
+  /* ── SOLUTION ── */
+  .pill {
+    display: inline-block; padding: 3px 12px; border-radius: 100px;
+    font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    background: rgba(91,106,248,.15); color: var(--accent);
+    border: 1px solid rgba(91,106,248,.3); margin-bottom: 10px;
+  }
+  .sol-diagram { margin: 28px 0 32px; border-radius: 16px; overflow: hidden; background: rgba(255,255,255,0.02); border: 1px solid var(--border); }
+
+  /* ── MARKET ── */
+  .market-layout { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+  .stat-big {
+    font-size: 48px; font-weight: 900; letter-spacing: -2px;
+    background: linear-gradient(135deg, #fff 0%, var(--teal) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; line-height: 1;
+  }
+  .market-right { display: flex; flex-direction: column; gap: 20px; }
+  .market-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .market-table th { text-align: left; padding: 10px 16px; background: rgba(255,255,255,.04); color: var(--muted); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .06em; }
+  .market-table td { padding: 11px 16px; border-top: 1px solid var(--border); color: #cbd5e1; }
+  .market-table tr:hover td { background: rgba(91,106,248,.05); }
+  .cagr { font-weight: 700; color: var(--green); }
+
+  /* ── BUSINESS MODEL ── */
+  .bm-card { position: relative; overflow: hidden; }
+  .bm-card .accent-line { position: absolute; top: 0; left: 0; right: 0; height: 3px; border-radius: 16px 16px 0 0; }
+  .bm-card ul { list-style: none; margin-top: 12px; }
+  .bm-card ul li { font-size: 13px; color: var(--muted); padding: 4px 0; display: flex; gap: 8px; }
+  .bm-card ul li::before { content: '→'; color: var(--accent); flex-shrink: 0; }
+  .bm-diagram { margin-bottom: 28px; }
+
+  /* ── CLIENTS ── */
+  .client-card { display: flex; align-items: flex-start; gap: 16px; }
+  .client-icon-wrap {
+    width: 52px; height: 52px; border-radius: 14px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 26px;
+  }
+  .client-name { font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .client-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 6px; }
+  .client-desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .client-kpi { display: flex; gap: 16px; margin-top: 10px; flex-wrap: wrap; }
+  .kpi { font-size: 11px; font-weight: 700; color: var(--green); background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.25); border-radius: 6px; padding: 3px 8px; }
+
+  /* ── TRACTION ── */
+  .traction-chart-wrap { margin-bottom: 24px; background: rgba(255,255,255,0.02); border: 1px solid var(--border); border-radius: 16px; padding: 24px 20px 16px; }
+  .traction-year {
+    background: linear-gradient(135deg, rgba(91,106,248,.12), rgba(124,58,237,.08));
+    border: 1px solid rgba(91,106,248,.25); border-radius: 16px; padding: 20px; text-align: center;
+  }
+  .traction-yr { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+  .traction-amt { font-size: 22px; font-weight: 900; letter-spacing: -1px; color: #fff; }
+
+  /* ── TEAM ── */
+  .avatar {
+    width: 68px; height: 68px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; font-weight: 800; color: #fff; margin: 0 auto 14px;
+    position: relative;
+  }
+  .avatar::after {
+    content: ''; position: absolute; inset: -3px; border-radius: 50%;
+    border: 2px solid rgba(91,106,248,.35);
+  }
+  .team-card { text-align: center; padding: 28px 16px; }
+  .team-name { font-size: 14px; font-weight: 700; color: #fff; }
+  .team-role { font-size: 11px; color: var(--accent); font-weight: 700; margin: 3px 0; text-transform: uppercase; letter-spacing: .04em; }
+  .team-prev { font-size: 12px; color: var(--muted); }
+
+  /* ── TECH ── */
+  .tech-tag {
+    display: inline-block; padding: 5px 12px; border-radius: 8px;
+    font-size: 12px; font-weight: 600;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+    color: #e2e8f0; margin: 4px;
+  }
+  .tech-arch { margin-bottom: 28px; }
+
+  /* ── ASK ── */
+  .ask-hero {
+    background: linear-gradient(135deg, rgba(91,106,248,.15), rgba(124,58,237,.1));
+    border: 1px solid rgba(91,106,248,.3); border-radius: 20px;
+    padding: 40px; text-align: center; margin-bottom: 24px; position: relative; overflow: hidden;
+  }
+  .ask-hero-bg { position: absolute; inset: 0; pointer-events: none; }
+  .ask-amount { font-size: 56px; font-weight: 900; letter-spacing: -2px; color: #fff; position: relative; z-index: 1; }
+  .ask-label { color: var(--muted); font-size: 15px; margin-top: 4px; position: relative; z-index: 1; }
+  .ask-detail { color: var(--accent); font-weight: 600; font-size: 14px; margin-top: 10px; position: relative; z-index: 1; }
+
+  /* ── FOOTER ── */
+  footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 32px 48px; text-align: center; font-size: 13px; color: var(--muted); }
+  footer strong { color: #fff; }
+  .glow-line { height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: .4; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    header { padding: 48px 24px 40px; }
+    .page { padding: 0 24px 60px; }
+    .grid-2, .grid-3, .grid-4, .about-layout, .market-layout { grid-template-columns: 1fr; }
+    .header-inner { flex-direction: column; align-items: flex-start; }
+    .header-badges { align-items: flex-start; }
+    h2 { font-size: 24px; }
+    .neural-bg { display: none; }
+    .ask-amount { font-size: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header>
+  <div class="header-glow-l"></div>
+
+  <!-- Animated Neural Network (right side) -->
+  <svg class="neural-bg" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="nodeGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#818cf8"/>
+        <stop offset="100%" stop-color="#5b6af8" stop-opacity="0"/>
+      </radialGradient>
+      <filter id="glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    </defs>
+    <!-- Connection lines -->
+    <g stroke="rgba(91,106,248,0.25)" stroke-width="1" fill="none">
+      <line x1="80" y1="60" x2="200" y2="110"><animate attributeName="opacity" values="0.1;0.5;0.1" dur="4s" repeatCount="indefinite"/></line>
+      <line x1="200" y1="110" x2="310" y2="60"><animate attributeName="opacity" values="0.3;0.6;0.3" dur="3s" repeatCount="indefinite"/></line>
+      <line x1="310" y1="60" x2="430" y2="100"><animate attributeName="opacity" values="0.2;0.55;0.2" dur="5s" repeatCount="indefinite"/></line>
+      <line x1="430" y1="100" x2="560" y2="50"><animate attributeName="opacity" values="0.15;0.5;0.15" dur="3.5s" repeatCount="indefinite"/></line>
+      <line x1="560" y1="50" x2="640" y2="120"><animate attributeName="opacity" values="0.2;0.6;0.2" dur="4.5s" repeatCount="indefinite"/></line>
+      <line x1="200" y1="110" x2="280" y2="200"><animate attributeName="opacity" values="0.1;0.45;0.1" dur="6s" repeatCount="indefinite"/></line>
+      <line x1="280" y1="200" x2="430" y2="100"/><line x1="280" y1="200" x2="400" y2="260"/>
+      <line x1="430" y1="100" x2="530" y2="190"><animate attributeName="opacity" values="0.2;0.5;0.2" dur="4s" repeatCount="indefinite"/></line>
+      <line x1="530" y1="190" x2="640" y2="120"/><line x1="530" y1="190" x2="580" y2="280"/>
+      <line x1="80" y1="60" x2="120" y2="170"/>
+      <line x1="120" y1="170" x2="280" y2="200"/>
+      <line x1="640" y1="120" x2="650" y2="240"/>
+      <line x1="80" y1="60" x2="310" y2="60"/>
+      <line x1="400" y1="260" x2="580" y2="280"/>
+      <line x1="120" y1="170" x2="200" y2="110"/>
+    </g>
+    <!-- Moving pulse on one path -->
+    <circle r="4" fill="#06b6d4" filter="url(#glow)">
+      <animateMotion dur="5s" repeatCount="indefinite" path="M80,60 L200,110 L310,60 L430,100 L560,50 L640,120"/>
+    </circle>
+    <circle r="3" fill="#5b6af8" filter="url(#glow)">
+      <animateMotion dur="7s" repeatCount="indefinite" begin="2s" path="M120,170 L280,200 L400,260 L580,280 L650,240"/>
+    </circle>
+    <!-- Nodes -->
+    <g filter="url(#glow)">
+      <circle cx="80"  cy="60"  r="6" fill="#5b6af8" opacity="0.9"><animate attributeName="r" values="5;7;5" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="200" cy="110" r="8" fill="#818cf8" opacity="0.85"><animate attributeName="r" values="7;9;7" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="310" cy="60"  r="5" fill="#5b6af8" opacity="0.7"/>
+      <circle cx="430" cy="100" r="9" fill="#7c3aed" opacity="0.9"><animate attributeName="r" values="8;11;8" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="560" cy="50"  r="5" fill="#06b6d4" opacity="0.8"><animate attributeName="r" values="4;6;4" dur="5s" repeatCount="indefinite"/></circle>
+      <circle cx="640" cy="120" r="7" fill="#5b6af8" opacity="0.85"/>
+      <circle cx="280" cy="200" r="6" fill="#818cf8" opacity="0.7"/>
+      <circle cx="530" cy="190" r="7" fill="#7c3aed" opacity="0.75"><animate attributeName="r" values="6;8;6" dur="4s" repeatCount="indefinite"/></circle>
+      <circle cx="120" cy="170" r="5" fill="#5b6af8" opacity="0.6"/>
+      <circle cx="400" cy="260" r="5" fill="#06b6d4" opacity="0.65"/>
+      <circle cx="580" cy="280" r="4" fill="#818cf8" opacity="0.5"/>
+      <circle cx="650" cy="240" r="4" fill="#5b6af8" opacity="0.55"/>
+    </g>
+  </svg>
+
+  <div class="header-inner">
+    <div class="logo-area">
+      <h1>AndinoLabs</h1>
+      <p class="tagline">AI-Native Digital Engineering for the Enterprise · 2026</p>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-green"><span class="dot pulse"></span> Active Operations</span>
+      <span class="badge badge-blue">Founded Nov 2023</span>
+      <span class="badge badge-teal">HQ: Bangalore + LATAM</span>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+<!-- ══════════ ABOUT ══════════ -->
+<section>
+  <div class="section-label">Who We Are</div>
+  <h2>Building the AI Future for LATAM's Largest Enterprises</h2>
+  <div class="about-layout">
+    <div>
+      <p class="about-text">
+        Andino is a digital engineering firm founded by leaders who drove large-scale transformation at some of the region's largest enterprises. We combine deep operational, technical and digital business expertise with AI-native, composable architecture to help complex organizations modernize, scale and compete globally.
+      </p>
+      <div class="founding-meta">
+        <div class="meta-item"><span class="meta-val">2023</span><span class="meta-lbl">Founded</span></div>
+        <div class="meta-item"><span class="meta-val">+40</span><span class="meta-lbl">AI PBCs</span></div>
+        <div class="meta-item"><span class="meta-val">4 wks</span><span class="meta-lbl">MVP delivery</span></div>
+        <div class="meta-item"><span class="meta-val">2030</span><span class="meta-lbl">Worldwide goal</span></div>
+      </div>
+    </div>
+
+    <!-- INDIA ↔ LATAM Globe SVG -->
+    <div class="globe-wrap">
+      <svg class="globe-svg" viewBox="0 0 420 220" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="globeGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="rgba(91,106,248,0.08)"/>
+            <stop offset="100%" stop-color="transparent"/>
+          </radialGradient>
+          <filter id="dotGlow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#5b6af8"/>
+            <stop offset="50%" stop-color="#06b6d4"/>
+            <stop offset="100%" stop-color="#10b981"/>
+          </linearGradient>
+        </defs>
+        <!-- Background ellipse (globe outline) -->
+        <ellipse cx="210" cy="110" rx="195" ry="100" fill="url(#globeGlow)" stroke="rgba(91,106,248,0.12)" stroke-width="1"/>
+        <!-- Latitude lines -->
+        <ellipse cx="210" cy="110" rx="195" ry="30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <ellipse cx="210" cy="110" rx="195" ry="70" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <!-- Longitude lines -->
+        <line x1="210" y1="10" x2="210" y2="210" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <path d="M130,12 Q80,110 130,208" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+        <path d="M290,12 Q340,110 290,208" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+        <!-- LATAM simplified shapes -->
+        <!-- Colombia/Venezuela blob -->
+        <path d="M90,80 Q100,72 115,75 Q122,82 118,95 Q108,100 95,95 Z" fill="rgba(91,106,248,0.15)" stroke="rgba(91,106,248,0.3)" stroke-width="1"/>
+        <!-- Brazil blob -->
+        <path d="M100,100 Q125,92 145,98 Q158,112 150,135 Q135,148 115,142 Q95,130 90,115 Z" fill="rgba(91,106,248,0.18)" stroke="rgba(91,106,248,0.35)" stroke-width="1"/>
+        <!-- Chile/Argentina -->
+        <path d="M90,140 Q97,138 102,145 Q105,165 98,185 Q91,190 86,180 Q84,160 88,145 Z" fill="rgba(91,106,248,0.12)" stroke="rgba(91,106,248,0.25)" stroke-width="1"/>
+        <!-- Peru/Bolivia -->
+        <path d="M80,108 Q92,100 100,108 Q102,122 95,130 Q83,128 78,118 Z" fill="rgba(91,106,248,0.1)" stroke="rgba(91,106,248,0.2)" stroke-width="1"/>
+
+        <!-- India simplified shape -->
+        <path d="M330,70 Q345,65 358,72 Q365,85 362,105 Q355,125 345,135 Q337,128 332,112 Q326,90 330,70 Z" fill="rgba(16,185,129,0.18)" stroke="rgba(16,185,129,0.4)" stroke-width="1"/>
+
+        <!-- Animated Arc: LATAM → India -->
+        <path d="M120,120 Q210,30 345,100" fill="none" stroke="url(#arcGrad)" stroke-width="2.5" stroke-dasharray="4,3" opacity="0.8">
+          <animate attributeName="stroke-dashoffset" from="100" to="-100" dur="3s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- City dots LATAM -->
+        <circle cx="118" cy="140" r="5" fill="#5b6af8" filter="url(#dotGlow)"><!-- Santiago -->
+          <animate attributeName="r" values="4;7;4" dur="2.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="138" cy="120" r="4" fill="#5b6af8" opacity="0.8"/><!-- São Paulo -->
+        <circle cx="100" cy="100" r="3.5" fill="#818cf8" opacity="0.7"/><!-- Bogotá -->
+
+        <!-- City dot India: Bangalore -->
+        <circle cx="345" cy="108" r="6" fill="#10b981" filter="url(#dotGlow)">
+          <animate attributeName="r" values="5;8;5" dur="2.5s" begin="1s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Moving ping on arc -->
+        <circle r="4" fill="#06b6d4" filter="url(#dotGlow)">
+          <animateMotion dur="3s" repeatCount="indefinite" path="M120,120 Q210,30 345,100"/>
+        </circle>
+
+        <!-- Labels -->
+        <text x="94" y="168" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8" letter-spacing="0.05em">LATAM</text>
+        <text x="330" y="148" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#34d399" letter-spacing="0.05em">INDIA</text>
+        <text x="193" y="25" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)" letter-spacing="0.04em">Tech Bridge</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROBLEM ══════════ -->
+<section>
+  <div class="section-label">The Problem</div>
+  <h2>Enterprises Stuck in a Pre-AI World</h2>
+
+  <!-- Problem Visual: Fragmented Silos -->
+  <div style="margin-bottom:28px;">
+    <svg viewBox="0 0 900 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;border-radius:12px;overflow:hidden;">
+      <defs>
+        <linearGradient id="redFade" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="rgba(239,68,68,0.18)"/>
+          <stop offset="100%" stop-color="rgba(239,68,68,0.04)"/>
+        </linearGradient>
+      </defs>
+      <rect width="900" height="130" fill="rgba(239,68,68,0.04)" rx="12"/>
+      <!-- 5 fragmented silos -->
+      <!-- Silo 1 -->
+      <rect x="40" y="20" width="130" height="80" rx="10" fill="url(#redFade)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+      <text x="105" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(239,68,68,0.8)">CRM</text>
+      <text x="105" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Legacy</text>
+      <!-- Silo 2 -->
+      <rect x="210" y="20" width="130" height="80" rx="10" fill="url(#redFade)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+      <text x="275" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(239,68,68,0.8)">ERP</text>
+      <text x="275" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Siloed</text>
+      <!-- Silo 3 -->
+      <rect x="380" y="20" width="130" height="80" rx="10" fill="url(#redFade)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+      <text x="445" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(239,68,68,0.8)">E-COMM</text>
+      <text x="445" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Monolith</text>
+      <!-- Silo 4 -->
+      <rect x="550" y="20" width="130" height="80" rx="10" fill="url(#redFade)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+      <text x="615" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(239,68,68,0.8)">DATA</text>
+      <text x="615" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Fragmented</text>
+      <!-- Silo 5 -->
+      <rect x="720" y="20" width="130" height="80" rx="10" fill="url(#redFade)" stroke="rgba(239,68,68,0.3)" stroke-width="1.5"/>
+      <text x="785" y="52" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="rgba(239,68,68,0.8)">AI/ML</text>
+      <text x="785" y="68" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">POC Only</text>
+      <!-- Broken connections (X marks) -->
+      <line x1="170" y1="60" x2="210" y2="60" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="190" y="56" text-anchor="middle" font-family="sans-serif" font-size="12" fill="rgba(239,68,68,0.8)">✕</text>
+      <line x1="340" y1="60" x2="380" y2="60" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="360" y="56" text-anchor="middle" font-family="sans-serif" font-size="12" fill="rgba(239,68,68,0.8)">✕</text>
+      <line x1="510" y1="60" x2="550" y2="60" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="530" y="56" text-anchor="middle" font-family="sans-serif" font-size="12" fill="rgba(239,68,68,0.8)">✕</text>
+      <line x1="680" y1="60" x2="720" y2="60" stroke="rgba(239,68,68,0.5)" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <text x="700" y="56" text-anchor="middle" font-family="sans-serif" font-size="12" fill="rgba(239,68,68,0.8)">✕</text>
+      <!-- Label -->
+      <text x="450" y="118" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="rgba(239,68,68,0.6)" letter-spacing="0.05em">NON-INTEROPERABLE LEGACY SYSTEMS · 20–30% OPERATIONAL OVERSPEND</text>
+    </svg>
+  </div>
+
+  <div class="grid-2">
+    <div class="card problem-card">
+      <div style="font-size:26px;margin-bottom:10px;">⚙️</div>
+      <h3>Operational Inefficiency</h3>
+      <p>Fragmented, non-interoperable legacy systems driving 20–30% operational overspend with no unified view.</p>
+    </div>
+    <div class="card problem-card">
+      <div style="font-size:26px;margin-bottom:10px;">⏱️</div>
+      <h3>Slow Time-to-Market</h3>
+      <p>Digital initiatives face 9–12+ month cycles. AI limited to POCs — never reaching core operations.</p>
+    </div>
+    <div class="card problem-card">
+      <div style="font-size:26px;margin-bottom:10px;">💸</div>
+      <h3>Cloud ROI Gap</h3>
+      <p>Cloud spending growing faster than measurable business ROI, without clear tech-business ownership.</p>
+    </div>
+    <div class="card problem-card">
+      <div style="font-size:26px;margin-bottom:10px;">⚠️</div>
+      <h3>Business Risk</h3>
+      <p>Lack of true ownership across product, business and technology creates compounding transformation risk.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ SOLUTION ══════════ -->
+<section>
+  <div class="section-label">The Solution</div>
+  <h2>AI-Native Architecture. Production-Grade. At Scale.</h2>
+  <p style="max-width:760px;margin-bottom:28px;">We are not a time-and-materials provider. We build systems that become long-term strategic business assets — AI-native digital ecosystems at enterprise scale. Production-grade. Not experiments.</p>
+
+  <!-- PBC Architecture Diagram -->
+  <div class="sol-diagram">
+    <svg viewBox="0 0 860 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <linearGradient id="layerUI"  x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(124,58,237,0.35)"/><stop offset="100%" stop-color="rgba(91,106,248,0.25)"/></linearGradient>
+        <linearGradient id="layerAI"  x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(6,182,212,0.3)"/><stop offset="100%" stop-color="rgba(91,106,248,0.2)"/></linearGradient>
+        <linearGradient id="layerPBC" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(91,106,248,0.35)"/><stop offset="100%" stop-color="rgba(91,106,248,0.2)"/></linearGradient>
+        <linearGradient id="layerSvc" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(16,185,129,0.25)"/><stop offset="100%" stop-color="rgba(6,182,212,0.15)"/></linearGradient>
+        <linearGradient id="layerCld" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(245,158,11,0.25)"/><stop offset="100%" stop-color="rgba(239,68,68,0.15)"/></linearGradient>
+        <filter id="sg"><feGaussianBlur stdDeviation="2"/></filter>
+      </defs>
+      <!-- Layer 1: UI/UX -->
+      <rect x="20"  y="12" width="160" height="36" rx="8" fill="url(#layerUI)" stroke="rgba(124,58,237,0.5)" stroke-width="1.2"/>
+      <text x="100" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#a78bfa">UI / UX Experience</text>
+      <!-- Layer 2: AI -->
+      <rect x="200" y="12" width="160" height="36" rx="8" fill="url(#layerAI)" stroke="rgba(6,182,212,0.5)" stroke-width="1.2"/>
+      <text x="280" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">AI Layer</text>
+      <text x="280" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">LLM · RAG · Agents</text>
+      <!-- Layer 3: Composer/Assembler -->
+      <rect x="380" y="12" width="160" height="36" rx="8" fill="url(#layerPBC)" stroke="rgba(91,106,248,0.5)" stroke-width="1.2"/>
+      <text x="460" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#818cf8">Composer</text>
+      <text x="460" y="42" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.4)">Assembler · Orchestrator</text>
+      <!-- PBC blocks -->
+      <rect x="560" y="12" width="70" height="36" rx="8" fill="url(#layerPBC)" stroke="rgba(91,106,248,0.45)" stroke-width="1"/>
+      <text x="595" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8">PBC 1</text>
+      <rect x="640" y="12" width="70" height="36" rx="8" fill="url(#layerPBC)" stroke="rgba(91,106,248,0.45)" stroke-width="1"/>
+      <text x="675" y="34" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8">PBC 2</text>
+      <rect x="720" y="12" width="70" height="36" rx="8" fill="url(#layerPBC)" stroke="rgba(91,106,248,0.45)" stroke-width="1"/>
+      <text x="755" y="28" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8">PBC +40</text>
+      <text x="755" y="41" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.3)">modular</text>
+
+      <!-- Row 2: Microservices -->
+      <rect x="20"  y="75" width="230" height="36" rx="8" fill="url(#layerSvc)" stroke="rgba(16,185,129,0.4)" stroke-width="1.2"/>
+      <text x="135" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#34d399">Microservices · APIs · Events</text>
+      <text x="135" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">API-First · Observability · Security</text>
+
+      <rect x="270" y="75" width="230" height="36" rx="8" fill="url(#layerSvc)" stroke="rgba(6,182,212,0.35)" stroke-width="1.2"/>
+      <text x="385" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#22d3ee">Data & Intelligence</text>
+      <text x="385" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Analytics · ML-Ops · Real-time</text>
+
+      <rect x="520" y="75" width="320" height="36" rx="8" fill="url(#layerSvc)" stroke="rgba(16,185,129,0.3)" stroke-width="1.2"/>
+      <text x="680" y="90" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#34d399">DevSecOps · CI/CD · Infra</text>
+      <text x="680" y="104" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Automated · Ephemeral Envs · Serverless</text>
+
+      <!-- Row 3: Cloud -->
+      <rect x="20" y="138" width="820" height="36" rx="8" fill="url(#layerCld)" stroke="rgba(245,158,11,0.35)" stroke-width="1.2"/>
+      <text x="430" y="154" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Cloud Native Infrastructure</text>
+      <text x="430" y="168" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.35)">AWS · GCP · Azure · Multi-Cloud · Security-first · Scalable by design</text>
+
+      <!-- Arrows between rows -->
+      <g stroke="rgba(255,255,255,0.12)" stroke-width="1" fill="none" marker-end="url(#arr)">
+        <line x1="100" y1="48" x2="100" y2="75"/><line x1="280" y1="48" x2="280" y2="75"/>
+        <line x1="460" y1="48" x2="460" y2="75"/><line x1="650" y1="48" x2="650" y2="75"/>
+        <line x1="200" y1="111" x2="200" y2="138"/><line x1="430" y1="111" x2="430" y2="138"/>
+        <line x1="680" y1="111" x2="680" y2="138"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="pill">Framework</div>
+      <h3>PBC Composable Architecture</h3>
+      <p>Independent, measurable, reusable Package Business Capabilities — modular, scalable, AI-ready from day one.</p>
+    </div>
+    <div class="card">
+      <div class="pill">Development</div>
+      <h3>Agentic Development (Nebula)</h3>
+      <p>Specialized agents for discovery, planning, execution & validation — with human-in-the-loop gates at every critical checkpoint.</p>
+    </div>
+    <div class="card">
+      <div class="pill">Methodology</div>
+      <h3>4E Framework</h3>
+      <p><strong style="color:#fff">Explore · Establish · Execute · Expand</strong> — from product vision to hyperscaling with AI-first design throughout.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ MARKET ══════════ -->
+<section>
+  <div class="section-label">The Market</div>
+  <h2>A Multi-Trillion Dollar Convergence</h2>
+  <div class="market-layout">
+    <div>
+      <div class="stat-big">$4.8T</div>
+      <p style="margin-top:8px;font-size:15px;color:#cbd5e1;">Global AI Market by 2033</p>
+      <p style="margin-top:6px;">CAGR of <strong style="color:var(--green)">38.2%</strong> · Latin America is the fastest-growing region globally.</p>
+
+      <!-- Mini growth chart -->
+      <svg viewBox="0 0 230 100" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-top:20px;">
+        <defs>
+          <linearGradient id="chartGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="rgba(6,182,212,0.5)"/>
+            <stop offset="100%" stop-color="rgba(6,182,212,0.02)"/>
+          </linearGradient>
+        </defs>
+        <!-- Area fill -->
+        <path d="M20,88 Q50,85 80,78 Q110,68 140,50 Q170,28 210,8 L210,92 L20,92 Z" fill="url(#chartGrad)"/>
+        <!-- Line -->
+        <path d="M20,88 Q50,85 80,78 Q110,68 140,50 Q170,28 210,8" fill="none" stroke="#06b6d4" stroke-width="2.5" stroke-linecap="round"/>
+        <!-- Data points -->
+        <circle cx="20"  cy="88" r="3.5" fill="#5b6af8"/>
+        <circle cx="80"  cy="78" r="3.5" fill="#5b6af8"/>
+        <circle cx="140" cy="50" r="3.5" fill="#06b6d4"/>
+        <circle cx="210" cy="8"  r="5"   fill="#06b6d4"><animate attributeName="r" values="4;6;4" dur="2s" repeatCount="indefinite"/></circle>
+        <!-- Labels -->
+        <text x="14"  y="100" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">2023</text>
+        <text x="74"  y="100" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">2026</text>
+        <text x="134" y="100" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">2029</text>
+        <text x="200" y="100" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">2033</text>
+        <text x="185" y="7"  font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#22d3ee">$4.8T</text>
+      </svg>
+    </div>
+    <div class="market-right">
+      <!-- TAM bars chart -->
+      <svg viewBox="0 0 500 120" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
+        <defs>
+          <linearGradient id="b1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#5b6af8"/><stop offset="100%" stop-color="rgba(91,106,248,0.4)"/></linearGradient>
+          <linearGradient id="b2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7c3aed"/><stop offset="100%" stop-color="rgba(124,58,237,0.4)"/></linearGradient>
+          <linearGradient id="b3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="rgba(6,182,212,0.4)"/></linearGradient>
+          <linearGradient id="b4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="rgba(16,185,129,0.4)"/></linearGradient>
+        </defs>
+        <!-- AI Global -->
+        <rect x="10"  y="20" width="420" height="22" rx="5" fill="url(#b1)"/>
+        <text x="16"  y="35" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#fff">AI (Global)</text>
+        <text x="438" y="35" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8">38.2%</text>
+        <!-- Gen AI -->
+        <rect x="10"  y="50" width="290" height="18" rx="5" fill="url(#b2)"/>
+        <text x="16"  y="63" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#fff">Generative AI</text>
+        <text x="308" y="63" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#a78bfa">41.6%</text>
+        <!-- Cloud -->
+        <rect x="10"  y="76" width="180" height="18" rx="5" fill="url(#b3)"/>
+        <text x="16"  y="89" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#fff">Cloud Infra</text>
+        <text x="198" y="89" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#22d3ee">20.4%</text>
+        <!-- IT -->
+        <rect x="10" y="102" width="80"  height="14" rx="5" fill="url(#b4)" opacity="0.7"/>
+        <text x="16" y="113" font-family="Inter,sans-serif" font-size="9" fill="#fff">IT Services</text>
+        <text x="98" y="113" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#34d399">7.1%</text>
+        <!-- CAGR label -->
+        <text x="490" y="10" text-anchor="end" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.3)" letter-spacing="0.05em">CAGR</text>
+      </svg>
+      <table class="market-table">
+        <thead><tr><th>Segment</th><th>Current</th><th>Target</th><th>CAGR</th></tr></thead>
+        <tbody>
+          <tr><td>AI (Global)</td><td>$189B</td><td>$4.8T (2033)</td><td class="cagr">38.2%</td></tr>
+          <tr><td>Generative AI</td><td>$40B</td><td>$1.3T (2032)</td><td class="cagr">41.6%</td></tr>
+          <tr><td>Cloud Infra</td><td>$75B</td><td>$2.39T (2032)</td><td class="cagr">20.4%</td></tr>
+          <tr><td>IT Services</td><td>$1.43T</td><td>$2.64T (2034)</td><td class="cagr">7.1%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ BUSINESS MODEL ══════════ -->
+<section>
+  <div class="section-label">Business Model</div>
+  <h2>Strategic Partner, Not a Vendor</h2>
+
+  <!-- BM Diagram -->
+  <div class="bm-diagram">
+    <svg viewBox="0 0 860 90" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <!-- Track 1: Corporate -->
+      <rect x="10"  y="15" width="255" height="55" rx="10" fill="rgba(91,106,248,0.1)" stroke="rgba(91,106,248,0.35)" stroke-width="1.5"/>
+      <text x="137" y="37" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#818cf8">🏢 CORPORATE</text>
+      <text x="137" y="54" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.45)">12–18 month engagements · Recurring revenue</text>
+      <text x="137" y="66" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Cencosud · Salcobrand</text>
+
+      <!-- Arrow -->
+      <text x="285" y="48" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.2)">+</text>
+
+      <!-- Track 2: Startups -->
+      <rect x="305" y="15" width="255" height="55" rx="10" fill="rgba(16,185,129,0.1)" stroke="rgba(16,185,129,0.35)" stroke-width="1.5"/>
+      <text x="432" y="37" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#34d399">🚀 STARTUPS</text>
+      <text x="432" y="54" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.45)">Equity model · Exit in 24–36 months</text>
+      <text x="432" y="66" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Serhafen · Miinsys · Berzo AI</text>
+
+      <!-- Plus -->
+      <text x="580" y="48" font-family="sans-serif" font-size="18" fill="rgba(255,255,255,0.2)">+</text>
+
+      <!-- Track 3: Studios -->
+      <rect x="600" y="15" width="255" height="55" rx="10" fill="rgba(245,158,11,0.1)" stroke="rgba(245,158,11,0.35)" stroke-width="1.5"/>
+      <text x="727" y="37" text-anchor="middle" font-family="Inter,sans-serif" font-size="12" font-weight="800" fill="#fbbf24">🎬 ANDINO STUDIOS</text>
+      <text x="727" y="54" text-anchor="middle" font-family="Inter,sans-serif" font-size="9.5" fill="rgba(255,255,255,0.45)">Product incubation · Prod-ready AI assets</text>
+      <text x="727" y="66" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.3)">Catalog Genie · Flipzr · GivHolo</text>
+    </svg>
+  </div>
+
+  <div class="grid-3">
+    <div class="card bm-card">
+      <div class="accent-line" style="background:linear-gradient(90deg,var(--accent),var(--accent2));"></div>
+      <h3 style="margin-top:8px;">Corporate</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Long-term partnerships, 12–18 month projects</p>
+      <ul>
+        <li>High-value enterprise contracts</li>
+        <li>Recurring revenue streams</li>
+        <li>Strategic advisory & board participation</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--muted);">eg. <strong style="color:#fff">Cencosud · Salcobrand</strong></div>
+    </div>
+    <div class="card bm-card">
+      <div class="accent-line" style="background:linear-gradient(90deg,var(--green),var(--teal));"></div>
+      <h3 style="margin-top:8px;">Startups</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Accelerating scale, equity model</p>
+      <ul>
+        <li>Equity-for-service ventures</li>
+        <li>Exit in 24–36 months</li>
+        <li>Active involvement & roadmap co-ownership</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--muted);">eg. <strong style="color:#fff">Serhafen · Miinsys · Berzo AI</strong></div>
+    </div>
+    <div class="card bm-card">
+      <div class="accent-line" style="background:linear-gradient(90deg,var(--amber),#f97316);"></div>
+      <h3 style="margin-top:8px;">Andino Studios</h3>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:8px;">Value creation through incubation</p>
+      <ul>
+        <li>New product incubation</li>
+        <li>Prod-ready AI platform assets</li>
+        <li>Proprietary spin-off products</li>
+      </ul>
+      <div style="margin-top:14px;font-size:12px;color:var(--muted);">eg. <strong style="color:#fff">Catalog Genie · Flipzr · GivHolo AI</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CUSTOMERS ══════════ -->
+<section>
+  <div class="section-label">Customers & Portfolio</div>
+  <h2>Proven Execution Across Industries</h2>
+  <div class="grid-2">
+    <div class="card client-card">
+      <div class="client-icon-wrap" style="background:rgba(91,106,248,0.1);border:1px solid rgba(91,106,248,0.25);">🛒</div>
+      <div>
+        <div class="client-tag">Retail · Corporate</div>
+        <div class="client-name">Cencosud</div>
+        <div class="client-desc">Largest retailer in South America — 5 countries, 5000+ sellers, 4M+ SKUs. Andino built full composable PBC ecosystem.</div>
+        <div class="client-kpi">
+          <span class="kpi">+12pp Conversion</span>
+          <span class="kpi">&gt;99.6% Inventory Acc.</span>
+          <span class="kpi">CES 40→75%</span>
+        </div>
+      </div>
+    </div>
+    <div class="card client-card">
+      <div class="client-icon-wrap" style="background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.25);">🚢</div>
+      <div>
+        <div class="client-tag">Logistics · Startup</div>
+        <div class="client-name">Serhafen</div>
+        <div class="client-desc">Multi-tenant cross-border customs & last-mile platform. Flipkart India → LATAM route launching Q3 2026.</div>
+        <div class="client-kpi">
+          <span class="kpi">1.5M packages/mo</span>
+          <span class="kpi">Flipkart Partnership</span>
+        </div>
+      </div>
+    </div>
+    <div class="card client-card">
+      <div class="client-icon-wrap" style="background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.25);">💊</div>
+      <div>
+        <div class="client-tag">Pharmacy · Corporate</div>
+        <div class="client-name">Salcobrand</div>
+        <div class="client-desc">Leading pharmacy chain in Chile. Composable loyalty, pricing, and promotions PBC implementation.</div>
+        <div class="client-kpi"><span class="kpi">Active 2025</span></div>
+      </div>
+    </div>
+    <div class="card client-card">
+      <div class="client-icon-wrap" style="background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);">⛏️</div>
+      <div>
+        <div class="client-tag">Mining · HSE · Startup</div>
+        <div class="client-name">Angelis (Mining)</div>
+        <div class="client-desc">AI-powered fatigue prevention & HSE management. Pupilometry integration, unified operator view, traceable safety audit.</div>
+        <div class="client-kpi"><span class="kpi">Safety & Compliance</span><span class="kpi">Real-time ops</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Andino Studios products strip -->
+  <div style="margin-top:20px;padding:20px 24px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:14px;">
+    <div style="font-size:11px;font-weight:700;color:var(--amber);letter-spacing:.08em;text-transform:uppercase;margin-bottom:12px;">Andino Studios Products</div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+      <span style="font-size:13px;color:#cbd5e1;"><strong style="color:#fff;">🔍 Catalog Genie</strong> — AI catalog enrichment</span>
+      <span style="color:rgba(255,255,255,.15);">|</span>
+      <span style="font-size:13px;color:#cbd5e1;"><strong style="color:#fff;">📦 Flipzr</strong> — AI dropshipping platform</span>
+      <span style="color:rgba(255,255,255,.15);">|</span>
+      <span style="font-size:13px;color:#cbd5e1;"><strong style="color:#fff;">🤖 Berzo AI</strong> — AI-powered search & personalization</span>
+      <span style="color:rgba(255,255,255,.15);">|</span>
+      <span style="font-size:13px;color:#cbd5e1;"><strong style="color:#fff;">🎯 GivHolo AI</strong> — Agentic platform</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRACTION ══════════ -->
+<section>
+  <div class="section-label">Traction</div>
+  <h2>This Is a Running Business — Not a Concept</h2>
+
+  <!-- Revenue Chart SVG -->
+  <div class="traction-chart-wrap">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:12px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;">Annual Revenue (USD)</div>
+    <svg viewBox="0 0 700 160" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <linearGradient id="areaGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="rgba(91,106,248,0.4)"/>
+          <stop offset="100%" stop-color="rgba(91,106,248,0.02)"/>
+        </linearGradient>
+        <filter id="glowpt"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <!-- Grid lines -->
+      <line x1="60" y1="20"  x2="660" y2="20"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="60" y1="55"  x2="660" y2="55"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="60" y1="90"  x2="660" y2="90"  stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+      <line x1="60" y1="125" x2="660" y2="125" stroke="rgba(255,255,255,0.05)" stroke-width="1" stroke-dasharray="4,4"/>
+      <!-- Y labels -->
+      <text x="52" y="24"  text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.25)">$3.5M</text>
+      <text x="52" y="59"  text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.25)">$2.5M</text>
+      <text x="52" y="94"  text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.25)">$1.5M</text>
+      <text x="52" y="129" text-anchor="end" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.25)">$0.5M</text>
+      <!-- Area fill -->
+      <path d="M130,132 C200,128 250,100 330,30 C370,25 430,32 530,30 L530,145 L130,145 Z" fill="url(#areaGrad)"/>
+      <!-- Line -->
+      <path d="M130,132 C200,128 250,100 330,30 C370,25 430,32 530,30" fill="none" stroke="#5b6af8" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Data points -->
+      <circle cx="130" cy="132" r="6" fill="#06060f" stroke="#5b6af8" stroke-width="2.5" filter="url(#glowpt)"/>
+      <circle cx="280" cy="100" r="6" fill="#06060f" stroke="#5b6af8" stroke-width="2.5" filter="url(#glowpt)"/>
+      <circle cx="430" cy="30"  r="8" fill="#06060f" stroke="#06b6d4" stroke-width="3" filter="url(#glowpt)">
+        <animate attributeName="r" values="7;10;7" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="530" cy="30"  r="6" fill="#06060f" stroke="#10b981" stroke-width="2.5" filter="url(#glowpt)"/>
+      <!-- Value labels -->
+      <text x="130" y="122" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#818cf8">$450K</text>
+      <text x="280" y="90"  text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#818cf8">$1.1M</text>
+      <text x="430" y="20"  text-anchor="middle" font-family="Inter,sans-serif" font-size="13" font-weight="900" fill="#22d3ee">$3.5M</text>
+      <text x="530" y="20"  text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#34d399">$3.3M+</text>
+      <!-- Year labels -->
+      <text x="130" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.4)">2023</text>
+      <text x="280" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.4)">2024</text>
+      <text x="430" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.4)">2025</text>
+      <text x="530" y="155" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="600" fill="rgba(255,255,255,0.5)">2026E</text>
+    </svg>
+  </div>
+
+  <div class="grid-4">
+    <div class="traction-year"><div class="traction-yr">2023</div><div class="traction-amt">$450K</div></div>
+    <div class="traction-year"><div class="traction-yr">2024</div><div class="traction-amt">$1.1M</div></div>
+    <div class="traction-year" style="border-color:rgba(6,182,212,0.4);"><div class="traction-yr">2025</div><div class="traction-amt" style="color:#22d3ee;">$3.5M</div></div>
+    <div class="traction-year" style="border-color:rgba(16,185,129,0.3);"><div class="traction-yr">2026E</div><div class="traction-amt" style="color:#34d399;">$3.3M+</div></div>
+  </div>
+
+  <div class="grid-3" style="margin-top:20px;">
+    <div class="card" style="text-align:center;">
+      <div style="font-size:30px;font-weight:900;color:var(--green);">40%</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">Healthy engineering margins</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:22px;font-weight:900;color:var(--teal);">LATAM + India</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">Active ops across two continents</div>
+    </div>
+    <div class="card" style="text-align:center;">
+      <div style="font-size:22px;font-weight:900;color:var(--accent);">Bootstrapped</div>
+      <div style="font-size:13px;color:var(--muted);margin-top:4px;">Profitable since Nov 2023</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TEAM ══════════ -->
+<section>
+  <div class="section-label">Leadership Team</div>
+  <h2>Operators, Not Just Advisors</h2>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:16px;">
+    <div class="card team-card">
+      <div class="avatar">IM</div>
+      <div class="team-name">Italo Moyano</div>
+      <div class="team-role">CEO & Founder</div>
+      <div class="team-prev">Ex CDO @ Cencosud</div>
+    </div>
+    <div class="card team-card">
+      <div class="avatar" style="background:linear-gradient(135deg,var(--teal),var(--accent));">SK</div>
+      <div class="team-name">Shabrinath Kande</div>
+      <div class="team-role">CTO & Founder</div>
+      <div class="team-prev">Ex Sr. Architect @ Falabella</div>
+    </div>
+    <div class="card team-card">
+      <div class="avatar" style="background:linear-gradient(135deg,var(--green),var(--teal));">MM</div>
+      <div class="team-name">Mauro Mangione</div>
+      <div class="team-role">CPO</div>
+      <div class="team-prev">Ex Head of Product @ Walmart</div>
+    </div>
+    <div class="card team-card">
+      <div class="avatar" style="background:linear-gradient(135deg,var(--amber),#f97316);">DR</div>
+      <div class="team-name">Diego Rebolledo</div>
+      <div class="team-role">CCO</div>
+      <div class="team-prev">Ex CIO @ Walmart</div>
+    </div>
+    <div class="card team-card">
+      <div class="avatar" style="background:linear-gradient(135deg,#ec4899,var(--accent2));">JP</div>
+      <div class="team-name">Juan Pablo González</div>
+      <div class="team-role">Country Manager USA</div>
+      <div class="team-prev">Country Manager @ Buscalibre</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TECH ══════════ -->
+<section>
+  <div class="section-label">Technology</div>
+  <h2>Engineering Built to Scale</h2>
+
+  <!-- Architecture layer visual -->
+  <div class="tech-arch">
+    <svg viewBox="0 0 860 130" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <linearGradient id="t1" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(124,58,237,0.4)"/><stop offset="100%" stop-color="rgba(124,58,237,0.1)"/></linearGradient>
+        <linearGradient id="t2" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(6,182,212,0.35)"/><stop offset="100%" stop-color="rgba(6,182,212,0.1)"/></linearGradient>
+        <linearGradient id="t3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(91,106,248,0.35)"/><stop offset="100%" stop-color="rgba(91,106,248,0.1)"/></linearGradient>
+        <linearGradient id="t4" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(16,185,129,0.3)"/><stop offset="100%" stop-color="rgba(16,185,129,0.08)"/></linearGradient>
+        <linearGradient id="t5" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="rgba(245,158,11,0.25)"/><stop offset="100%" stop-color="rgba(245,158,11,0.06)"/></linearGradient>
+      </defs>
+      <!-- Row 1 -->
+      <rect x="10" y="8"  width="200" height="22" rx="7" fill="url(#t1)" stroke="rgba(124,58,237,0.4)" stroke-width="1"/>
+      <text x="110" y="23" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#a78bfa">UI/UX · Design System</text>
+      <rect x="220" y="8" width="220" height="22" rx="7" fill="url(#t2)" stroke="rgba(6,182,212,0.4)" stroke-width="1"/>
+      <text x="330" y="23" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#22d3ee">AI · LLMs · RAG · Agentic Workflows</text>
+      <rect x="450" y="8" width="200" height="22" rx="7" fill="url(#t3)" stroke="rgba(91,106,248,0.4)" stroke-width="1"/>
+      <text x="550" y="23" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8">ML-Ops · LLM Maintenance</text>
+      <rect x="660" y="8" width="190" height="22" rx="7" fill="url(#t1)" stroke="rgba(124,58,237,0.35)" stroke-width="1"/>
+      <text x="755" y="23" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#a78bfa">Private RAG Pipelines</text>
+      <!-- Row 2 -->
+      <rect x="10"  y="40" width="310" height="22" rx="7" fill="url(#t3)" stroke="rgba(91,106,248,0.35)" stroke-width="1"/>
+      <text x="165" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#818cf8">Composable PBCs · API-First · Microservices</text>
+      <rect x="330" y="40" width="250" height="22" rx="7" fill="url(#t4)" stroke="rgba(16,185,129,0.35)" stroke-width="1"/>
+      <text x="455" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#34d399">Observability · Security · IAM</text>
+      <rect x="590" y="40" width="260" height="22" rx="7" fill="url(#t4)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+      <text x="720" y="55" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" font-weight="700" fill="#34d399">Automated CI/CD · DevSecOps</text>
+      <!-- Row 3: Cloud base -->
+      <rect x="10" y="72" width="840" height="48" rx="8" fill="url(#t5)" stroke="rgba(245,158,11,0.3)" stroke-width="1.2"/>
+      <text x="430" y="92" text-anchor="middle" font-family="Inter,sans-serif" font-size="11" font-weight="800" fill="#fbbf24">☁️  Cloud-Native Infrastructure</text>
+      <text x="430" y="110" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="rgba(255,255,255,0.35)">Multi-Cloud · Serverless · Ephemeral Environments · Onshore / Nearshore / Offshore delivery</text>
+    </svg>
+  </div>
+
+  <div class="grid-2" style="gap:28px;">
+    <div>
+      <h3 style="color:var(--accent);margin-bottom:12px;">Architecture & AI</h3>
+      <div>
+        <span class="tech-tag">Cloud-Native Microservices</span><span class="tech-tag">Serverless</span>
+        <span class="tech-tag">API-First</span><span class="tech-tag">LLM Training & Eval</span>
+        <span class="tech-tag">Agentic Workflows</span><span class="tech-tag">Private RAG Pipelines</span>
+        <span class="tech-tag">ML-Ops & LLM Maintenance</span><span class="tech-tag">Automated CI/CD</span>
+      </div>
+    </div>
+    <div>
+      <h3 style="color:var(--teal);margin-bottom:12px;">Operating Model</h3>
+      <div>
+        <span class="tech-tag">Weeks, Not Quarters</span><span class="tech-tag">High Component Reuse</span>
+        <span class="tech-tag">Onshore / Nearshore / Offshore</span><span class="tech-tag">Cloud Consulting</span>
+        <span class="tech-tag">System Architecture</span><span class="tech-tag">Data Platforms</span>
+        <span class="tech-tag">Security & Maintenance</span><span class="tech-tag">Ephemeral Environments</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ ASK ══════════ -->
+<section>
+  <div class="section-label">Strategy & Ask</div>
+  <h2>Where We're Going and What We're Raising</h2>
+  <div class="ask-hero">
+    <!-- Background stars/sparkles -->
+    <svg class="ask-hero-bg" viewBox="0 0 900 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="askGlow1" cx="30%" cy="50%" r="40%"><stop offset="0%" stop-color="rgba(91,106,248,0.3)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        <radialGradient id="askGlow2" cx="70%" cy="50%" r="40%"><stop offset="0%" stop-color="rgba(124,58,237,0.25)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+      </defs>
+      <rect width="900" height="160" fill="url(#askGlow1)"/>
+      <rect width="900" height="160" fill="url(#askGlow2)"/>
+      <!-- Stars -->
+      <circle cx="80"  cy="30"  r="1.5" fill="white" opacity="0.4"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite"/></circle>
+      <circle cx="200" cy="70"  r="1"   fill="white" opacity="0.3"><animate attributeName="opacity" values="0.1;0.7;0.1" dur="4s" repeatCount="indefinite" begin="1s"/></circle>
+      <circle cx="400" cy="20"  r="1.5" fill="white" opacity="0.5"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="2.5s" repeatCount="indefinite" begin="0.5s"/></circle>
+      <circle cx="600" cy="50"  r="1"   fill="#818cf8" opacity="0.6"><animate attributeName="opacity" values="0.3;0.9;0.3" dur="3.5s" repeatCount="indefinite"/></circle>
+      <circle cx="750" cy="30"  r="1.5" fill="white" opacity="0.4"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="5s" repeatCount="indefinite" begin="2s"/></circle>
+      <circle cx="820" cy="100" r="1"   fill="#06b6d4" opacity="0.5"><animate attributeName="opacity" values="0.2;0.7;0.2" dur="4s" repeatCount="indefinite" begin="1.5s"/></circle>
+      <circle cx="150" cy="130" r="1.5" fill="white" opacity="0.3"><animate attributeName="opacity" values="0.1;0.6;0.1" dur="6s" repeatCount="indefinite"/></circle>
+      <circle cx="680" cy="140" r="1"   fill="white" opacity="0.4"><animate attributeName="opacity" values="0.2;0.8;0.2" dur="3s" repeatCount="indefinite" begin="2.5s"/></circle>
+    </svg>
+    <div style="font-size:12px;color:var(--muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:.1em;position:relative;z-index:1;">Capital Raise</div>
+    <div class="ask-amount">USD 500K</div>
+    <div class="ask-label">First investor closed · Implied valuation: <strong style="color:#fff;">USD 10M</strong></div>
+    <div class="ask-detail">5% equity · Allocated to growth, AI platforms and global expansion</div>
+  </div>
+
+  <!-- 2030 Roadmap Timeline -->
+  <div style="margin-bottom:24px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:14px;padding:20px 24px 16px;">
+    <div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:14px;">Roadmap to 2030</div>
+    <svg viewBox="0 0 820 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;">
+      <defs>
+        <linearGradient id="roadGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#5b6af8"/>
+          <stop offset="60%" stop-color="#06b6d4"/>
+          <stop offset="100%" stop-color="#10b981"/>
+        </linearGradient>
+      </defs>
+      <!-- Timeline line -->
+      <line x1="30" y1="28" x2="790" y2="28" stroke="url(#roadGrad)" stroke-width="2.5" stroke-linecap="round"/>
+      <!-- Milestones -->
+      <circle cx="30"  cy="28" r="7" fill="#5b6af8" stroke="#06060f" stroke-width="2"/>
+      <circle cx="185" cy="28" r="7" fill="#5b6af8" stroke="#06060f" stroke-width="2"/>
+      <circle cx="340" cy="28" r="7" fill="#06b6d4" stroke="#06060f" stroke-width="2"/>
+      <circle cx="530" cy="28" r="7" fill="#06b6d4" stroke="#06060f" stroke-width="2"><animate attributeName="r" values="6;9;6" dur="2s" repeatCount="indefinite"/></circle>
+      <circle cx="790" cy="28" r="9" fill="#10b981" stroke="#06060f" stroke-width="2" filter="url(#glowpt)"/>
+      <!-- Labels top -->
+      <text x="30"  y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#818cf8">2023</text>
+      <text x="185" y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#818cf8">2024</text>
+      <text x="340" y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#22d3ee">2025</text>
+      <text x="530" y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#22d3ee">2026</text>
+      <text x="790" y="14" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" font-weight="700" fill="#34d399">2030</text>
+      <!-- Labels bottom -->
+      <text x="30"  y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">Founded</text>
+      <text x="185" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">Cencosud·$1M</text>
+      <text x="340" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.35)">$3.5M·Salcobrand</text>
+      <text x="530" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" fill="rgba(255,255,255,0.4)">US+Brazil·$500K raise</text>
+      <text x="790" y="44" text-anchor="middle" font-family="Inter,sans-serif" font-size="8" font-weight="700" fill="#34d399">Best Tech Co. LATAM</text>
+    </svg>
+  </div>
+
+  <div class="grid-3">
+    <div class="card">
+      <h3>🌎 Scale</h3>
+      <p style="font-size:13px;margin-top:8px;">Expand enterprise client base in LATAM, US, and Brazil. Advance cloud certifications and strategic partnerships.</p>
+    </div>
+    <div class="card">
+      <h3>🤖 Productize</h3>
+      <p style="font-size:13px;margin-top:8px;">Launch proprietary AI products from Andino Studios. Build an AI Accelerator Hub with senior talent scaling.</p>
+    </div>
+    <div class="card">
+      <h3>🏆 2030 Vision</h3>
+      <p style="font-size:13px;margin-top:8px;">Best Digital Tech Company (ecommerce) in LATAM. AI First / Growth x10 / Worldwide Profits & Capabilities.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="glow-line"></div>
+<footer>
+  <strong>AndinoLabs</strong> · AI-Native Digital Engineering · Bangalore, India + LATAM + USA<br>
+  <span style="margin-top:6px;display:block;">Contact: <a href="mailto:diego@andinolabs.com" style="color:var(--accent);text-decoration:none;">diego@andinolabs.com</a> · 2026</span>
+</footer>
+
+</body>
+</html>
